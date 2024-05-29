@@ -3,13 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DataAccess;
 
-public class FinanceCSContext : DbContext
+public class FinanceCSContext(DbContextOptions<FinanceCSContext> options) : DbContext(options)
 {
-    public FinanceCSContext(DbContextOptions<FinanceCSContext> options) : base(options)
-    {
-        Database.EnsureCreated();
-    }
-
     public DbSet<User> Users { get; set; }
 
     public DbSet<RenewToken> RenewTokens { get; set; }
